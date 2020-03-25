@@ -52,11 +52,14 @@ public class CoronavirusStatsServicesImpl implements CoronavirusStatsServices{
     @Override
     public HashMap<String, Country> getCountry(String country)  {
         HashMap <String, Country> datos = new HashMap<String, Country>();
+
         if(cacheP.getCacheProv(country) == null) {
             try {
                 String countryU = country.replaceAll("\\s+", "");
                 paises = httpCS.getCountryStats(countryU);
+                //System.out.println(paises);
                 processData(paises, "province", datos);
+                
             } catch (UnirestException e) {
                 e.printStackTrace();
             }
@@ -70,7 +73,7 @@ public class CoronavirusStatsServicesImpl implements CoronavirusStatsServices{
                 datos.put(c.getCountry(), c);
             }
         }
-            
+        
         return datos;
     }
 
