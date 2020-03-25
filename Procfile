@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* edu.eci.arsw.coivd.CovidApplication -Dserver.port=$PORT $JAR_OPTS
+web: java $JAVA_OPTS -cp target/classes:target/dependency/* com.edu.eci.arsw.covid.CovidApplication -Dserver.port=$PORT $JAR_OPTS
