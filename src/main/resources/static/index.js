@@ -14,8 +14,7 @@ $(document).ready(function () {
       $('#mainBody').append(tr);
       $('#id' + index).click(function (val) {
         let cnt = String(val.currentTarget.cells[0].innerText);
-        console.log(cnt)
-        $('#country').html(val.currentTarget.cells[0].innerTextString);
+        $('#country').html(cnt);
         $('#confirmed').html(val.currentTarget.cells[1].innerText);
         $('#recovered').html(val.currentTarget.cells[2].innerText);
         $('#deaths').html(val.currentTarget.cells[3].innerText);
