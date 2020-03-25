@@ -27,6 +27,10 @@ public class CoronavirusStatsServicesImpl implements CoronavirusStatsServices{
     String paises;
 
 
+    /**
+     * Obtener los datos de todos los paises del API
+     * @return HashMap con llave nombre de pais y Country datos del pais
+     */
     @Override
     public HashMap<String, Country> getCountries() {
         HashMap <String, Country> datos = new HashMap<String, Country>();
@@ -49,6 +53,10 @@ public class CoronavirusStatsServicesImpl implements CoronavirusStatsServices{
         return datos;
     }
 
+    /**
+     * Obtener los datos de un pais del API
+     * @return HashMap con llave nombre de pais y Country datos del pais
+     */
     @Override
     public HashMap<String, Country> getCountry(String country)  {
         HashMap <String, Country> datos = new HashMap<String, Country>();
@@ -77,6 +85,12 @@ public class CoronavirusStatsServicesImpl implements CoronavirusStatsServices{
         return datos;
     }
 
+    /**
+     * Processar datos para generar y usar los JSON 
+     * @param data Nombre del Pais
+     * @param op Indica si es Pais o Provincia
+     * @param datos Hashmap con datos del pais
+     */
     private void processData(String data, String op, HashMap<String, Country> datos){
         JSONObject json = new JSONObject(data);
         JSONArray jArray = json.getJSONObject("data").getJSONArray("covid19Stats");

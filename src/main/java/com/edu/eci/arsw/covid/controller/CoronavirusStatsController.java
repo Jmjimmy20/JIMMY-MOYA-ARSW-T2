@@ -21,6 +21,11 @@ public class CoronavirusStatsController{
     CoronavirusStatsServices cServices;
 
 
+    /**
+     * Endpoint para consultar un pais
+     * @param name Nombre de pais a consultar
+     * @return Datos desde el API del pais bucado
+     */
     @RequestMapping(value = "/{name}", method = RequestMethod.GET)
     public ResponseEntity<?> getCasesByCountry(@PathVariable ("name") String name){
         try {
@@ -31,6 +36,10 @@ public class CoronavirusStatsController{
         }
     }
 
+    /**
+     * Endpoint para consultar todos los paises
+     * @return Los datos de todos los pasis en el API
+     */
     @RequestMapping(value = "/getAll")
     public ResponseEntity<?> getAllCases(){
         try {
