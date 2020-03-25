@@ -13,13 +13,22 @@ $(document).ready(function () {
       let tr = '<tr id="' + 'id' + index + '">' + th + tdd + tdc + tdr + '</tr>'
       $('#mainBody').append(tr);
       $('#id' + index).click(function (val) {
-        console.log(val.currentTarget.cells[0].innerText)
-        $('#country').html(val.currentTarget.cells[0].innerText);
+        let cnt = String(val.currentTarget.cells[0].innerText);
+        console.log(cnt)
+        $('#country').html(val.currentTarget.cells[0].innerTextString);
         $('#confirmed').html(val.currentTarget.cells[1].innerText);
         $('#recovered').html(val.currentTarget.cells[2].innerText);
         $('#deaths').html(val.currentTarget.cells[3].innerText);
-        $.get("countries/" + val.currentTarget.cells[0].innerText, function (data) {
-          console.log(data)
+        $.get("countries/" + cnt, function (cities) {
+          $('#cityBody').html('');
+          $.map(cities, (val) => {
+            let tdc2 = '<td>' + val.confirmed + '</td>'
+            let tdr2 = '<td>' + val.recovered + '</td>'
+            let tdd2 = '<td>' + val.deaths + '</td>'
+            let th2 = '<th scope="row">' + val.country + '</th>'
+            let tr2 = '<tr id="' + 'id' + index + '">' + th2 + tdd2 + tdc2 + tdr2 + '</tr>'
+            $('#cityBody').append(tr2);
+          });
         });
       });
       index += 1;

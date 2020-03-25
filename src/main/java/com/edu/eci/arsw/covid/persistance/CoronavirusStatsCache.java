@@ -15,6 +15,7 @@ public class CoronavirusStatsCache{
 
     public CoronavirusStatsCache(){
         cache = new HashMap<>();
+        provincias = new HashMap<>();
     }
 
     public void addNewCountry(String key, Country data){
@@ -23,7 +24,6 @@ public class CoronavirusStatsCache{
     }
 
     public CachePaises getCache(String key){
-
         return cache.get(key);
     }
 
@@ -32,8 +32,6 @@ public class CoronavirusStatsCache{
     }
 
     public ArrayList<Country> getCacheProv(String key){
-
-
         return provincias.get(key);
     }
 
