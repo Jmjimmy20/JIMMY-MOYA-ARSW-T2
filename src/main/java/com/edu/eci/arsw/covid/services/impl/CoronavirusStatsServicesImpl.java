@@ -52,10 +52,10 @@ public class CoronavirusStatsServicesImpl implements CoronavirusStatsServices{
     @Override
     public HashMap<String, Country> getCountry(String country)  {
         HashMap <String, Country> datos = new HashMap<String, Country>();
-        // System.out.println(cacheP.getCacheProv(country) == null);
         if(cacheP.getCacheProv(country) == null) {
             try {
-                paises = httpCS.getCountryStats(country);
+                String countryU = country.replaceAll("\\s+", "");
+                paises = httpCS.getCountryStats(countryU);
                 processData(paises, "province", datos);
             } catch (UnirestException e) {
                 e.printStackTrace();
@@ -87,6 +87,7 @@ public class CoronavirusStatsServicesImpl implements CoronavirusStatsServices{
                         temporal.sumDeaths(aux.getInt("deaths"));
                         temporal.sumRecovered(aux.getInt("recovered"));
                     } else {
+                        System.out.println(aux.toString());
                         Country temporal = datos.get(aux.getString("country"));
                         temporal.sumConfirmed(aux.getInt("confirmed"));
                         temporal.sumDeaths(aux.getInt("deaths"));

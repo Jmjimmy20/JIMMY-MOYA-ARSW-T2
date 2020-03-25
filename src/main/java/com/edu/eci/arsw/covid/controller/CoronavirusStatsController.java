@@ -24,13 +24,11 @@ public class CoronavirusStatsController{
     @RequestMapping(value = "/{name}", method = RequestMethod.GET)
     public ResponseEntity<?> getCasesByCountry(@PathVariable ("name") String name){
         try {
-          System.out.println(name);
           return new ResponseEntity<>(cServices.getCountry(name), HttpStatus.OK);
         } catch (Exception ex) {
           Logger.getLogger(CoronavirusStatsController.class.getName()).log(Level.SEVERE, null, ex);
           return new ResponseEntity<>("Not found", HttpStatus.NOT_FOUND);
         }
-        
     }
 
     @RequestMapping(value = "/getAll")
