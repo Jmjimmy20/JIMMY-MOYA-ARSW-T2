@@ -5,25 +5,29 @@ import com.edu.eci.arsw.covid.services.CoronavirusStatsServices;
 import com.edu.eci.arsw.covid.services.HttpConnectionService;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CoronavirusStatsServicesImpl implements CoronavirusStatsServices{
 
+    @Autowired
     HttpConnectionService httpCS;
+    @Autowired
+    CoronavirusStatsCache cacheP;
     String paises;
     String data;
-    CoronavirusStatsCache cacheP;
+
 
     @Override
     public String getCountries() {
-        paises = null;
+        paises = "";
         try{
             paises = httpCS.getAllCou();
         }catch(UnirestException e){
             e.printStackTrace();
         }
+        
         return paises;
     }
 
