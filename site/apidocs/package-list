@@ -1,0 +1,6 @@
+com.edu.eci.arsw.covid
+com.edu.eci.arsw.covid.controller
+com.edu.eci.arsw.covid.models
+com.edu.eci.arsw.covid.persistance
+com.edu.eci.arsw.covid.services
+com.edu.eci.arsw.covid.services.impl
