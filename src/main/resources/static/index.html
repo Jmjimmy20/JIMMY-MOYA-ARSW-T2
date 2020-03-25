@@ -20,8 +20,8 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm">
-          <table class="table" id="main">
+        <div class="col-sm table-responsive static">
+          <table class="table table-hover" id="main">
             <thead>
               <tr>
                 <th scope="col">Country</th>
@@ -31,11 +31,11 @@
               </tr>
             </thead>
             <tbody id="mainBody">
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+              <tr id="click">
+                <th scope="row">Canada</th>
+                <td>60</td>
+                <td>50</td>
+                <td>0</td>
               </tr>
             </tbody>
           </table>
@@ -44,21 +44,15 @@
 
       <div class="row">
         <div class="col-sm">
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
-            </div>
-            <input type="text" id="value" class="form-control" aria-label="Sizing example input"
-              aria-describedby="inputGroup-sizing-default">
-          </div>
+          <h3 id="country" class="title"></h3>
         </div>
       </div>
       
       <div class="row">
-        <div class="col-md-6 col-stack">
+        <div class="col-md-6">
           <div id="map" class="map"></div>
         </div>
-        <div class="col-md-6 col-stack">
+        <div class="col-md-6">
           <table class="table">
             <thead>
               <tr>
@@ -69,15 +63,15 @@
             <tbody>
               <tr>
                 <th scope="row">Confirmed</th>
-                <td>234</td>
+                <td id="confirmed">234</td>
               </tr>
               <tr>
                 <th scope="row">Recovered</th>
-                <td>1</td>
+                <td id="recovered">1</td>
               </tr>
               <tr>
                 <th scope="row">Deaths</th>
-                <td>3</td>
+                <td id="deaths">3</td>
               </tr>
             </tbody>
           </table>

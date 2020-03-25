@@ -3,6 +3,7 @@
   padding: 15px;
   border-radius: 15px;
   border: 5px solid black;
+  text-align: center;
 }
 
 .map{
@@ -13,4 +14,8 @@
 
 .blank {
   margin-top: 15px;
+}
+
+.static {
+  max-height: 300px;
 }

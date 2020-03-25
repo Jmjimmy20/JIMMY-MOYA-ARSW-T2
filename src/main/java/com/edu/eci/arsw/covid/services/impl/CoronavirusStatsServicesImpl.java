@@ -9,7 +9,6 @@ import com.edu.eci.arsw.covid.persistance.CachePaises;
 import com.edu.eci.arsw.covid.persistance.CoronavirusStatsCache;
 import com.edu.eci.arsw.covid.services.CoronavirusStatsServices;
 import com.edu.eci.arsw.covid.services.HttpConnectionService;
-import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -77,20 +76,19 @@ public class CoronavirusStatsServicesImpl implements CoronavirusStatsServices{
 
     private void processData(String data, String op, HashMap<String, Country> datos){
         JSONObject json = new JSONObject(data);
-                JSONArray jArray = json.getJSONObject("data").getJSONArray("covid19Stats");
-                System.out.println(jArray.toString());
-                for(int i =0 ; i<jArray.length();i++){
-                    JSONObject aux = jArray.getJSONObject(i);
-                    if(datos.get(aux.getString(op))!=null){
-                        Country temporal = datos.get(aux.getString(op));
-                        temporal.sumConfirmed(aux.getInt("confirmed"));
-                        temporal.sumDeaths(aux.getInt("deaths"));
-                        temporal.sumRecovered(aux.getInt("recovered"));
-                    }else{
-                        Country temporal = new Country(aux.getString(op),aux.getInt("confirmed"),aux.getInt("deaths"),aux.getInt("recovered"));
-                        datos.put(aux.getString(op), temporal);
-                    }
-                }
+        JSONArray jArray = json.getJSONObject("data").getJSONArray("covid19Stats");
+        for(int i =0 ; i<jArray.length();i++){
+            JSONObject aux = jArray.getJSONObject(i);
+            if(datos.get(aux.getString(op))!=null){
+                Country temporal = datos.get(aux.getString(op));
+                temporal.sumConfirmed(aux.getInt("confirmed"));
+                temporal.sumDeaths(aux.getInt("deaths"));
+                temporal.sumRecovered(aux.getInt("recovered"));
+            }else{
+                Country temporal = new Country(aux.getString(op),aux.getInt("confirmed"),aux.getInt("deaths"),aux.getInt("recovered"));
+                datos.put(aux.getString(op), temporal);
+            }
+        }
     }
     
 }

@@ -4,7 +4,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.edu.eci.arsw.covid.services.CoronavirusStatsServices;
-import com.mashape.unirest.http.exceptions.UnirestException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
